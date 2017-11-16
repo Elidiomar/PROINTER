@@ -1,0 +1,111 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="pt">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <title><%: Page.Title %> - Home Angels</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <asp:PlaceHolder runat="server">           
+        <script src="<%: ResolveUrl("~/Scripts/modernizr-2.6.2.js") %>"></script>
+    </asp:PlaceHolder>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+</head>
+<body>
+    <form runat="server">
+    <asp:ScriptManager runat="server">
+        <Scripts>
+            <asp:ScriptReference Name="jquery" />
+            <asp:ScriptReference Name="jquery.ui.combined" />
+        </Scripts>
+    </asp:ScriptManager>
+    <header>
+
+        <div class="header">
+            <h3>PROINTER IV</h3>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="float-left">
+                <img class="img-logo" runat="server" src="Images/logo.png" alt="Home Angels" />
+                <p class="site-title"><a runat="server" href="~/">Home Angels</a></p>                
+            </div>
+            <div class="float-right">
+                <section id="login">
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">                        
+                        <LoggedInTemplate>
+                            <p>
+                                Olá, <a runat="server" class="username" href="~/Account/Manage.aspx" title="Gerenciar sua conta">
+                                    <asp:LoginName runat="server" CssClass="username" />
+                                </a>!
+                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Fazer logoff" LogoutPageUrl="~/" />
+                            </p>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+
+                </section> 
+                <br />
+                <div class="frase">
+                 <p>Frase empresa...</p>                             
+                    </div>
+            </div>
+        </div>
+        
+        <div class="content">   
+            <div class="content-wrapper">
+            <div class="div-line">
+                <hr />
+            </div>
+            <div class="div-nav">
+                <nav>
+                    <ul id="menu">
+                        <li><a runat="server" href="~/">Home</a></li>                                               
+                        <li><a id="registerLink" runat="server" href="~/Account/Register.aspx">Registre-se</a></li>
+                        <li><a id="loginLink" runat="server" href="~/Account/Login.aspx">Login</a></li>                        
+                        <li><a runat="server" href="~/Cuidador.aspx">Cuidador</a></li> 
+                        <asp:LoginView runat="server" ViewStateMode="Disabled">                        
+                        <LoggedInTemplate>
+                            <li><a runat="server" href="~/Requisicao.aspx">Requisição</a></li> 
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                    </ul>
+                </nav>
+            </div>
+                </div>
+        </div>
+    </header>
+    <div id="body">
+        <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+        <section class="content-wrapper main-content clear-fix">
+            <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+        </section>
+
+         <section class="banner">
+            <div class="content-wrapper ">
+                <h1>BANNER</h1>
+            <p>
+                ....
+            </p>
+        </div>
+
+    </section>
+    </div>
+        
+       
+
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>
+                    &copy; <%: DateTime.Now.Year %> - PROINTER
+                </p>
+            </div>
+        </div>
+    </footer>
+    </form>
+</body>
+</html>
